@@ -15,5 +15,14 @@ export const styles = StyleSheet.create({
         color: theme.colors.heading,
         marginRight: 6,
     },
+    username: {
+        fontFamily: theme.fonts.title700,
+        fontSize: 24,
+        color: theme.colors.heading
+    },
+    message: {
+        fontFamily: theme.fonts.text400,
+        color: theme.colors.highlight
+    }
 
 });
