@@ -22,10 +22,7 @@ export function Category({
     const { secondary50, secondary70 } = theme.colors;
 
     return (
-        <RectButton
-            style={styles.container}
-            {...rest}
-        >
+        <RectButton {...rest} >
             <LinearGradient
                 style={styles.container}
                 colors={[
@@ -33,14 +30,22 @@ export function Category({
                     secondary70
                 ]}
             >
-                <View style={[styles.content, { opacity: checked ? 1 : 0.4 }]}>
-                    <View style={checked ? styles.checked : styles.check}>
-                        <Icon
-                            width={48}
-                            height={48}
-                        />
-                    </View>
-                    <Text style={styles.title}>
+                <View
+                    style={
+                        [styles.content, { opacity: checked ? 1 : 0.4 }]
+                    }
+                >
+                    <View
+                        style={
+                            checked ? styles.checked : styles.check
+                        }
+                    />
+                    <Icon
+                        width={48}
+                        height={48}
+                    />
+                    <Text
+                        style={styles.title}>
                         {title}
                     </Text>
                 </View>
