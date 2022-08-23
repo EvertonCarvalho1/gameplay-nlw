@@ -16,7 +16,9 @@ export function CategorySelect() {
             {
                 categories.map((category) => (
                     <Category
-
+                        key={category.id}
+                        title={category.title}
+                        icon={category.icon}
                     />
                 ))
 
