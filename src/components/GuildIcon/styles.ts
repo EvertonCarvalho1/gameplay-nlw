@@ -7,4 +7,5 @@ export const styles = StyleSheet.create({
         borderRadius: 8,
         marginRight: 20,
     },
+
 });
