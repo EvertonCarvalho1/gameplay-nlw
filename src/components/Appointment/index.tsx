@@ -1,5 +1,5 @@
 import React from "react";
-import { RectButton } from 'react-native-gesture-handler'
+import { RectButton, RectButtonProps } from 'react-native-gesture-handler'
 import { View, Text } from "react-native";
 
 import { styles } from "./styles";
@@ -16,18 +16,17 @@ export type AppointmentProps = {
     description: string;
 }
 
-type Props = RectButton & {
+type Props = RectButtonProps & {
     data: AppointmentProps;
 }
 
 export function Appointment({ data, ...rest }: Props) {
 
     return (
-        <RectButton
-            style={styles.container}
-            {...rest}
-        >
+        <RectButton {...rest}>
+            <View style={styles.container}>
 
+            </View>
         </RectButton>
     );
 }

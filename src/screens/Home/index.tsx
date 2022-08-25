@@ -7,6 +7,8 @@ import { Profile } from "../../components/Profile";
 import { ListHeader } from "../../components/ListHeader";
 
 import { styles } from "./styles";
+import { GuildIcon } from "../../components/GuildIcon";
+import { Appointment } from "../../components/Appointment";
 
 export function Home() {
     const [category, setCategory] = useState('');
@@ -53,9 +55,11 @@ export function Home() {
                     data={appointments}
                     keyExtractor={item => item.id}
                     renderItem={({ item, index, separators }) => (
-                        <Text>
-
-                        </Text>
+                        <Appointment
+                            data={item}
+                        >
+                            <GuildIcon />
+                        </Appointment>
                     )}
                 />
             </View>
