@@ -11,8 +11,10 @@ import { categories } from "../../utils/categories";
 import { theme } from "../../global/styles/theme";
 
 export type GuildProps = {
-    owner: true;
+    id: string;
     name: string;
+    icon: string | null,
+    owner: boolean;
 }
 
 export type AppointmentProps = {
