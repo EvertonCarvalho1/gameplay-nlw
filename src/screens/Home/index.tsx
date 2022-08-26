@@ -5,9 +5,10 @@ import { ButtonAdd } from "../../components/ButtonAdd";
 import { CategorySelect } from "../../components/CategorySelect";
 import { Profile } from "../../components/Profile";
 import { ListHeader } from "../../components/ListHeader";
+import { Appointment } from "../../components/Appointment";
+import { ListDivider } from "../../components/ListDivider";
 
 import { styles } from "./styles";
-import { Appointment } from "../../components/Appointment";
 
 export function Home() {
     const [category, setCategory] = useState('');
@@ -50,12 +51,11 @@ export function Home() {
                 <ButtonAdd />
             </View>
 
-            <View>
-                <CategorySelect
-                    categorySelected={category}
-                    setCategory={handleCategorySelect}
-                />
-            </View>
+            <CategorySelect
+                categorySelected={category}
+                setCategory={handleCategorySelect}
+            />
+
             <View style={styles.content}>
                 <ListHeader
                     title="Partidas agendadas"
@@ -68,6 +68,7 @@ export function Home() {
                     renderItem={({ item, index, separators }) => (
                         <Appointment data={item} />
                     )}
+                    ItemSeparatorComponent={() => <ListDivider />}
                     style={styles.matches}
                     showsVerticalScrollIndicator={false}
                 />
