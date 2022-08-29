@@ -1,5 +1,4 @@
 import React from "react";
-'react-native-gesture-handler'
 import { Image } from "react-native";
 
 import { styles } from "./styles";
