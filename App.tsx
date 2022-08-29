@@ -6,6 +6,7 @@ import { Inter_400Regular, Inter_500Medium } from '@expo-google-fonts/inter';
 import { Rajdhani_500Medium, Rajdhani_700Bold } from '@expo-google-fonts/rajdhani';
 import { Routes } from "./src/routes";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { Background } from "./src/components/Background";
 
 
 
@@ -23,12 +24,14 @@ export default function App() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <StatusBar
-        barStyle='light-content'
-        backgroundColor='transparent'
-        translucent
-      />
-      <Routes />
+      <Background>
+        <StatusBar
+          barStyle='light-content'
+          backgroundColor='transparent'
+          translucent
+        />
+        <Routes />
+      </Background>
     </GestureHandlerRootView>
 
   );
