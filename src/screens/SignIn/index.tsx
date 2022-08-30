@@ -16,7 +16,7 @@ export function SignIn() {
     const navigation = useNavigation();
 
     function handleSignIn() {
-        navigation.navigate('Home' as never);
+        navigation.navigate('Home');
     }
 
     return (

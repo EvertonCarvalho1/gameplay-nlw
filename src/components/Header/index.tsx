@@ -3,7 +3,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { BorderlessButton } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
 
-import { View } from "react-native";
+import { View, Text } from "react-native";
 
 import { styles } from "./styles";
 import { theme } from "../../global/styles/theme";
@@ -11,7 +11,6 @@ import { theme } from "../../global/styles/theme";
 type Props = {
     title: string;
     action?: ReactNode;
-
 }
 
 export function Header({ title, action }: Props) {
@@ -19,6 +18,7 @@ export function Header({ title, action }: Props) {
 
     return (
         <LinearGradient
+            style={styles.container}
             colors={[secondary100, secondary40]}
         >
             <BorderlessButton>
@@ -28,6 +28,19 @@ export function Header({ title, action }: Props) {
                     color={heading}
                 />
             </BorderlessButton>
+
+            <Text
+                style={styles.title}
+            >
+                {title}
+            </Text>
+
+            {
+                action &&
+                <View>
+                    {action}
+                </View>
+            }
         </LinearGradient>
     );
 } 
