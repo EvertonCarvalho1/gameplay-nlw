@@ -4,7 +4,7 @@ import { theme } from "../../global/styles/theme";
 
 export const styles = StyleSheet.create({
     container: {
-        //width: '100',
+        width: '100%',
         height: 104,
         paddingTop: getStatusBarHeight(),
         paddingHorizontal: 24,
