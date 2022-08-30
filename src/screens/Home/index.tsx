@@ -50,9 +50,7 @@ export function Home() {
     }
 
     function handleAppointmentDetails() {
-        console.log('cheguei em cima')
         navigation.navigate('AppointmentDetails');
-        console.log('cheguei em baixo')
     }
 
     return (
