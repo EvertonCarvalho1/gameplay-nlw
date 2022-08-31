@@ -15,9 +15,10 @@ import BannerImg from '../../assets/banner.png';
 import { Background } from "../../components/Background";
 import { ListHeader } from "../../components/ListHeader";
 import { Header } from "../../components/Header";
+import { ListDivider } from "../../components/ListDivider";
+import { Members } from "../../components/Members";
 
 import { styles } from "./styles";
-import { Members } from "../../components/Members";
 
 export function AppointmentDetails() {
     const members = [
@@ -82,6 +83,7 @@ export function AppointmentDetails() {
                         data={item}
                     />
                 )}
+                ItemSeparatorComponent={() => <ListDivider />}
             />
         </Background>
     );
