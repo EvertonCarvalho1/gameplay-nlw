@@ -8,6 +8,14 @@ export const styles = StyleSheet.create({
     banner: {
         width: '100%',
         height: 234,
+        marginBottom: 30,
+    },
+    bannerContent: {
+        flex: 1,
+        justifyContent: "flex-end",
+        paddingHorizontal: 24,
+        marginBottom: 30
+
     },
     title: {
         fontSize: 28,
