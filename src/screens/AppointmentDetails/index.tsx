@@ -84,6 +84,7 @@ export function AppointmentDetails() {
                     />
                 )}
                 ItemSeparatorComponent={() => <ListDivider />}
+                style={styles.members}
             />
         </Background>
     );

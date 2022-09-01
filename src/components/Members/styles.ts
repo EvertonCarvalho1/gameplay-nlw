@@ -6,6 +6,8 @@ export const styles = StyleSheet.create({
         width: '100%',
         flexDirection: 'row',
         alignItems: 'center',
+        marginTop: 12,
+        marginBottom: 14,
     },
     title: {
         fontFamily: theme.fonts.title700,
@@ -17,6 +19,14 @@ export const styles = StyleSheet.create({
         color: theme.colors.highlight,
         fontSize: 13
     },
-
-
+    status: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    bulletStatus: {
+        width: 8,
+        height: 8,
+        borderRadius: 4,
+        marginRight: 9,
+    }
 });
