@@ -13,6 +13,7 @@ import { styles } from "./styles";
 import { Background } from "../../components/Background";
 import { CategorySelect } from "../../components/CategorySelect";
 import { Header } from "../../components/Header";
+import { GuildIcon } from "../../components/GuildIcon";
 
 export function AppointmentCreate() {
     const [category, setCategory] = useState('');
@@ -21,7 +22,10 @@ export function AppointmentCreate() {
         <Background>
             <Header title="Agendar partida" />
 
-            <Text style={styles.label}>
+            <Text style={[
+                styles.label,
+                { marginLeft: 24, marginTop: 36, marginBottom: 18 }]}
+            >
                 Categoria
             </Text>
 
@@ -34,7 +38,9 @@ export function AppointmentCreate() {
             <View style={styles.form}>
                 <RectButton>
                     <View style={styles.select}>
-                        <View style={styles.image} />
+
+                        {/* <View style={styles.image} /> */}
+                        <GuildIcon />
 
                         <View style={styles.selectBody}>
                             <Text style={styles.label}>

@@ -22,5 +22,18 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 8,
         alignItems: "center",
+        paddingRight: 25,
+        overflow: "hidden"
     },
+    selectBody: {
+        flex: 1,
+        alignItems: 'center',
+    },
+    image: {
+        width: 64,
+        height: 68,
+        backgroundColor: theme.colors.secondary50,
+        borderWidth: 1,
+        borderRadius: 8,
+    }
 });
