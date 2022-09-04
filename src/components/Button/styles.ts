@@ -1,3 +1,4 @@
+import { processFontFamily } from 'expo-font';
 import { StyleSheet } from 'react-native';
 import { theme } from '../../global/styles/theme';
 
