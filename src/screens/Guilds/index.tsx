@@ -1,18 +1,33 @@
 import React from "react";
 import { View, FlatList } from "react-native";
 
-import { Guild } from "../../components/Guild";
+import { Guild, GuildProps } from "../../components/Guild";
 import { ListDivider } from "../../components/ListDivider";
 
 import { styles } from "./styles";
 
+type Props = {
+    handleGuildSelected: (guild: GuildProps) => void;
+}
 
-export function Guilds() {
+export function Guilds({ handleGuildSelected }: Props) {
     const guilds = [
         {
             id: '1',
             name: 'Lendários',
-            icon: null,
+            icon: 'image.png',
+            owner: true
+        },
+        {
+            id: '2',
+            name: 'Gods of COD',
+            icon: 'image.png',
+            owner: true
+        },
+        {
+            id: '3',
+            name: 'Teste',
+            icon: 'image.png',
             owner: true
         },
     ]
@@ -25,6 +40,7 @@ export function Guilds() {
                 renderItem={({ item }) => (
                     <Guild
                         data={item}
+                        onPress={() => handleGuildSelected(item)}
                     />
                 )}
                 showsVerticalScrollIndicator={false}

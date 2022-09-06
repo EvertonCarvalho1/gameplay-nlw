@@ -35,11 +35,11 @@ export function AppointmentCreate() {
         } else {
             setOpenGuildsModal(true);
         }
-
     };
 
-    function handleGuildSelect(guildSelected: GuildProps) {
+    function handleGuildSelected(guildSelected: GuildProps) {
         setGuild(guildSelected);
+        setOpenGuildsModal(false);
     };
 
     return (
@@ -70,12 +70,11 @@ export function AppointmentCreate() {
                         >
                             <View style={styles.select}>
 
-                                {/* <View style={styles.image} /> */}
-                                <GuildIcon />
+                                {guild.icon ? <GuildIcon /> : <View style={styles.image} />}
 
                                 <View style={styles.selectBody}>
                                     <Text style={styles.label}>
-                                        Selecione um servidor
+                                        {guild.name ? guild.name : 'Selecione um servidor'}
                                     </Text>
                                 </View>
 
@@ -143,7 +142,9 @@ export function AppointmentCreate() {
                 </Background>
             </ScrollView>
             <ModalView visible={openGuildsModal}>
-                <Guilds />
+                <Guilds
+                    handleGuildSelected={handleGuildSelected}
+                />
             </ModalView>
         </KeyboardAvoidingView>
     );
