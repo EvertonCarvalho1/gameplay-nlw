@@ -30,11 +30,10 @@ export function AppointmentCreate() {
     const [guild, setGuild] = useState<GuildProps>({} as GuildProps);
 
     function handleOpenGuilds() {
-        if (openGuildsModal) {
-            setOpenGuildsModal(false);
-        } else {
-            setOpenGuildsModal(true);
-        }
+        setOpenGuildsModal(true);
+    };
+    function handleCloseGuilds() {
+        setOpenGuildsModal(false);
     };
 
     function handleGuildSelected(guildSelected: GuildProps) {
@@ -47,8 +46,8 @@ export function AppointmentCreate() {
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
             style={styles.container}
         >
-            <ScrollView>
-                <Background>
+            <Background>
+                <ScrollView>
                     <Header title="Agendar partida" />
 
                     <Text style={[
@@ -88,7 +87,7 @@ export function AppointmentCreate() {
 
                         <View style={styles.field}>
                             <View>
-                                <Text style={styles.label}>
+                                <Text style={[styles.label, { marginBottom: 12 }]}>
                                     Dia e mês
                                 </Text>
 
@@ -102,7 +101,7 @@ export function AppointmentCreate() {
                             </View>
 
                             <View>
-                                <Text style={styles.label}>
+                                <Text style={[styles.label, { marginBottom: 12 }]}>
                                     Hora e minuto
                                 </Text>
 
@@ -139,9 +138,12 @@ export function AppointmentCreate() {
                             />
                         </View>
                     </View>
-                </Background>
-            </ScrollView>
-            <ModalView visible={openGuildsModal}>
+                </ScrollView>
+            </Background>
+            <ModalView
+                visible={openGuildsModal}
+                closeModal={handleCloseGuilds}
+            >
                 <Guilds
                     handleGuildSelected={handleGuildSelected}
                 />
