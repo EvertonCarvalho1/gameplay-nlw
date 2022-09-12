@@ -8,7 +8,7 @@ import { Routes } from "./src/routes";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { Background } from "./src/components/Background";
 
-
+import { AuthContext } from './src/context/auth';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -30,7 +30,12 @@ export default function App() {
           backgroundColor='transparent'
           translucent
         />
-        <Routes />
+        <AuthContext.Provider value={{
+          name: 'Everton',
+          surname: 'Carvalho'
+        }}>
+          <Routes />
+        </AuthContext.Provider>
       </Background>
     </GestureHandlerRootView>
 
