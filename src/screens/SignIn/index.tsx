@@ -21,6 +21,7 @@ export function SignIn() {
 
     function handleSignIn() {
         navigation.navigate('Home');
+
     }
 
     return (
