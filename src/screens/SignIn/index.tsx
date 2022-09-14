@@ -3,7 +3,8 @@ import {
     View,
     Text,
     Image,
-    StatusBar
+    StatusBar,
+    Alert
 } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 
@@ -17,11 +18,14 @@ import { Background } from "../../components/Background";
 
 export function SignIn() {
     const navigation = useNavigation();
-    const { user } = useAuth();
+    const { user, signIn } = useAuth();
 
-    function handleSignIn() {
-        navigation.navigate('Home');
-
+    async function handleSignIn() {
+        try {
+            await signIn()
+        } catch (error) {
+            Alert.alert('Não foi possivel autenticar!');
+        }
     }
 
     return (
