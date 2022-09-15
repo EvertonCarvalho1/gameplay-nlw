@@ -36,6 +36,12 @@ type AuthProviderProps = {
     children: ReactNode;
 }
 
+type AuthorizationReponse = AuthSession.AuthSessionResult & {
+    params: {
+        access_token: string;
+    }
+}
+
 export const AuthContext = createContext({} as AuthContextData);
 
 function AuthProvider({ children }: AuthProviderProps) {
@@ -48,10 +54,13 @@ function AuthProvider({ children }: AuthProviderProps) {
 
             const authUrl = `${api.defaults.baseURL}/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`;
 
-            console.log(authUrl);
+            const { type, params } = await AuthSession
+                .startAsync({ authUrl: authUrl }) as AuthorizationReponse;
 
-            AuthSession
-                .startAsync({ authUrl: authUrl })
+            //utilizamos o "api.defaults.headers", para que todas as requisições feitas depois que o usuário fez a autenticação, sejam feitas com o token.
+            if (type === 'success') {
+                api.defaults.headers.authorization = `Bearer ${params.access_token}`
+            }
 
         } catch {
             throw new Error('Não foi possivel autenticar');

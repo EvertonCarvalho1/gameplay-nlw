@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
     View,
     Text,
@@ -14,7 +14,6 @@ import { ButtonIcon } from "../../components/ButtonIcon";
 import IllustrationImg from '../../assets/illustration.png';
 import { styles } from './styles';
 import { Background } from "../../components/Background";
-
 
 export function SignIn() {
     const navigation = useNavigation();
