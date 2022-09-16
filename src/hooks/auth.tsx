@@ -28,6 +28,7 @@ type User = {
 }
 
 type AuthContextData = {
+    loading: boolean;
     user: User;
     signIn: () => Promise<void>;
 }
@@ -57,9 +58,24 @@ function AuthProvider({ children }: AuthProviderProps) {
             const { type, params } = await AuthSession
                 .startAsync({ authUrl: authUrl }) as AuthorizationReponse;
 
-            //utilizamos o "api.defaults.headers", para que todas as requisições feitas depois que o usuário fez a autenticação, sejam feitas com o token.
+            //utilizamos o "api.defaults.headers", para que todas as requisições feitas depois que o usuário fez a autenticação, sejam feitas com o token. O token é injetado em todas as requisições feitas.
             if (type === 'success') {
-                api.defaults.headers.authorization = `Bearer ${params.access_token}`
+                api.defaults.headers.authorization = `Bearer ${params.access_token}`;
+
+                const userInfo = await api.get('/users/@me');
+
+                const firstName = userInfo.data.username.split(' ')[0];
+                userInfo.data.avatar = `${CDN_IMAGE}/avatars/${userInfo.data.id}/${userInfo.data.avatar}.png`
+
+                setUser({
+                    ...userInfo.data,
+                    firstName,
+                    token: params.access_token
+                });
+
+                setLoading(false);
+            } else {
+                setLoading(false);
             }
 
         } catch {
@@ -68,7 +84,7 @@ function AuthProvider({ children }: AuthProviderProps) {
     }
 
     return (
-        <AuthContext.Provider value={{ user, signIn }}>
+        <AuthContext.Provider value={{ user, signIn, loading }}>
             {children}
         </AuthContext.Provider>
     )
