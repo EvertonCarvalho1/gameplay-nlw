@@ -39,7 +39,8 @@ type AuthProviderProps = {
 
 type AuthorizationReponse = AuthSession.AuthSessionResult & {
     params: {
-        access_token: string;
+        access_token?: string;
+        error?: string;
     }
 }
 
@@ -59,7 +60,7 @@ function AuthProvider({ children }: AuthProviderProps) {
                 .startAsync({ authUrl: authUrl }) as AuthorizationReponse;
 
             //utilizamos o "api.defaults.headers", para que todas as requisições feitas depois que o usuário fez a autenticação, sejam feitas com o token. O token é injetado em todas as requisições feitas.
-            if (type === 'success') {
+            if (type === 'success' && !params.error) {
                 api.defaults.headers.authorization = `Bearer ${params.access_token}`;
 
                 const userInfo = await api.get('/users/@me');
@@ -72,14 +73,11 @@ function AuthProvider({ children }: AuthProviderProps) {
                     firstName,
                     token: params.access_token
                 });
-
-                setLoading(false);
-            } else {
-                setLoading(false);
             }
-
         } catch {
             throw new Error('Não foi possivel autenticar');
+        } finally {
+            setLoading(false);
         }
     }
 

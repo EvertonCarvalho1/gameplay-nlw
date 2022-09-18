@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { useAuth } from '../hooks/auth';
 
 import { SignIn } from '../screens/SignIn';
-import { AuthRoutes } from './auth.routes';
+import { AppRoutes } from './app.routes';
 import { createStackNavigator } from '@react-navigation/stack';
 import { theme } from '../global/styles/theme';
 
@@ -17,7 +17,7 @@ export function Routes() {
         <NavigationContainer>
             {user.id
                 ?
-                <AuthRoutes />
+                <AppRoutes />
                 :
                 <Navigator
                     headerMode="none"
