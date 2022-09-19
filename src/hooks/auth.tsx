@@ -7,14 +7,13 @@ import React,
 } from 'react';
 
 import * as AuthSession from 'expo-auth-session';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import {
-    CDN_IMAGE,
-    CLIENT_ID,
-    REDIRECT_URI,
-    RESPONSE_TYPE,
-    SCOPE
-} from '../configs';
+const { CDN_IMAGE } = process.env;
+const { CLIENT_ID } = process.env;
+const { REDIRECT_URI } = process.env;
+const { RESPONSE_TYPE } = process.env;
+const { SCOPE } = process.env;
 
 import { api } from '../services/api';
 
@@ -68,6 +67,7 @@ function AuthProvider({ children }: AuthProviderProps) {
                 const firstName = userInfo.data.username.split(' ')[0];
                 userInfo.data.avatar = `${CDN_IMAGE}/avatars/${userInfo.data.id}/${userInfo.data.avatar}.png`
 
+                // await AsyncStorage.setItem('', )
                 setUser({
                     ...userInfo.data,
                     firstName,
