@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Feather } from '@expo/vector-icons';
 import { RectButton } from 'react-native-gesture-handler';
 import uuid from 'react-native-uuid';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
 
 import {
     Text,
@@ -11,6 +13,7 @@ import {
     KeyboardAvoidingView,
 } from 'react-native';
 
+import { COLLECTION_APPOINTMENTS } from "../../configs/database";
 import { theme } from "../../global/styles/theme";
 import { styles } from "./styles";
 
@@ -36,6 +39,8 @@ export function AppointmentCreate() {
     const [minute, setMinute] = useState('');
     const [description, setDescription] = useState('');
 
+    const navigation = useNavigation();
+
     function handleOpenGuilds() {
         setOpenGuildsModal(true);
     };
@@ -57,8 +62,20 @@ export function AppointmentCreate() {
             id: uuid.v4,
             guild: guild,
             category: category,
+            date: `${day}/${month} às ${hour}:${minute}`,
+            description: description
         }
-    }
+
+        const storage = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS);
+        const appointments = storage ? JSON.parse(storage) : [];
+
+        await AsyncStorage.setItem(
+            COLLECTION_APPOINTMENTS,
+            JSON.stringify([...appointments, newAppointment])
+        );
+
+        navigation.navigate('Home');
+    };
 
     return (
         <KeyboardAvoidingView
@@ -167,6 +184,7 @@ export function AppointmentCreate() {
                         <View style={styles.footer}>
                             <Button
                                 title="Agendar"
+                                onPress={handleSave}
                             />
                         </View>
                     </View>
