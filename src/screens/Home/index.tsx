@@ -46,11 +46,12 @@ export function Home() {
         }
 
         setLoading(false);
+
     }
 
-    useEffect(() => {
+    useFocusEffect(useCallback(() => {
         loadAppointments()
-    }, [])
+    }, [category]));
 
     return (
         <Background>
@@ -76,14 +77,15 @@ export function Home() {
                         />
                         <FlatList
                             data={appointments}
-                            keyExtractor={item => item.id}
+                            keyExtractor={item => item.guild.id}
                             renderItem={({ item, index, separators }) => (
                                 <Appointment
                                     data={item}
                                     onPress={handleAppointmentDetails}
                                 />
                             )}
-                            ItemSeparatorComponent={() => <ListDivider />}
+                            ItemSeparatorComponent={() => <ListDivider />
+                            }
                             contentContainerStyle={{ paddingBottom: 69 }}
                             style={styles.matches}
                             showsVerticalScrollIndicator={false}
