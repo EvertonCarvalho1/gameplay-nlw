@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { RectButton, RectButtonProps } from 'react-native-gesture-handler'
 import { View, Text } from "react-native";
 
@@ -24,7 +24,11 @@ type Props = RectButtonProps & {
 }
 
 export function Appointment({ data, ...rest }: Props) {
-    const [category] = categories.filter((item) => item.id === data.category);
+    const [category] = categories.filter((item) => {
+        return item.id === data.category
+    }
+
+    );
     const { owner } = data.guild;
     const { primary, on, secondary50, secondary70 } = theme.colors
 
