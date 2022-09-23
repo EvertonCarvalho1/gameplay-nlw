@@ -11,6 +11,7 @@ import {
     ScrollView,
     Platform,
     KeyboardAvoidingView,
+    Alert,
 } from 'react-native';
 
 import { COLLECTION_APPOINTMENTS } from "../../configs/database";
@@ -69,12 +70,16 @@ export function AppointmentCreate() {
         const storage = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS);
         const appointments = storage ? JSON.parse(storage) : [];
 
-        await AsyncStorage.setItem(
-            COLLECTION_APPOINTMENTS,
-            JSON.stringify([...appointments, newAppointment])
-        );
+        if (category !== '') {
+            await AsyncStorage.setItem(
+                COLLECTION_APPOINTMENTS,
+                JSON.stringify([...appointments, newAppointment])
+            );
 
-        navigation.navigate('Home');
+            navigation.navigate('Home');
+        } else {
+            Alert.alert('Selecione uma categoria!');
+        }
     };
 
     return (
