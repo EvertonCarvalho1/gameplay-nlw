@@ -27,7 +27,7 @@ export function Home() {
     }
 
     function handleAppointmentDetails(guildSelected: AppointmentProps) {
-        navigation.navigate('AppointmentDetails');
+        navigation.navigate('AppointmentDetails', { guildSelected: guildSelected });
     }
 
     function handleAppointmentCreate() {
@@ -80,7 +80,7 @@ export function Home() {
                             renderItem={({ item, index, separators }) => (
                                 <Appointment
                                     data={item}
-                                    onPress={(item: any) => { handleAppointmentDetails(item) }}
+                                    onPress={() => { handleAppointmentDetails(item) }}
                                 />
                             )}
                             ItemSeparatorComponent={() => <ListDivider />
