@@ -8,7 +8,9 @@ import {
     Text,
     View,
     FlatList,
-    Alert
+    Alert,
+    Platform,
+    Share
 } from 'react-native';
 
 import { theme } from "../../global/styles/theme";
@@ -34,7 +36,6 @@ type GuildWidget = {
     name: string;
     instant_invite: string;
     members: MemberProps[];
-    presence_count: number;
 }
 
 export function AppointmentDetails() {
@@ -55,30 +56,22 @@ export function AppointmentDetails() {
         }
     }
 
+    function handleShareInvitation() {
+        const message = Platform.OS == 'ios'
+            ? `Junte-se a ${guildSelected.guild.name}`
+            : widget.instant_invite;
+
+        Share.share({
+            message: message,
+            url: 'https://url_teste.com'
+        });
+
+        // console.log(widget)
+    }
+
     useEffect(() => {
         fetchGuildInfo();
     }, []);
-
-    const members = [
-        {
-            id: '1',
-            username: 'Jolielton',
-            avatar_url: 'https://avatars.githubusercontent.com/u/87612078?v=4',
-            status: 'online'
-        },
-        {
-            id: '2',
-            username: 'Enzo',
-            avatar_url: 'https://s2.glbimg.com/ZByPrW3xLJR8fIC1BkE2nq56NiI=/0x0:1514x917/600x0/smart/filters:gifv():strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2020/h/w/Abq4oBSySsO0xmGnkDlg/discord.jpg',
-            status: 'offline'
-        },
-        {
-            id: '3',
-            username: 'Jhon',
-            avatar_url: 'https://avatars.githubusercontent.com/u/84046012?v=4',
-            status: 'offline'
-        },
-    ]
 
     return (
         <Background>
@@ -90,6 +83,7 @@ export function AppointmentDetails() {
                             name="share"
                             size={24}
                             color={theme.colors.primary}
+                            onPress={handleShareInvitation}
                         />
                     </BorderlessButton>
                 }
@@ -109,27 +103,25 @@ export function AppointmentDetails() {
                 </View>
             </ImageBackground>
 
-            <ListHeader
-                title="Jogadores"
-                subtitle="Total 3"
-            />
-
             {loading ? <Load /> :
-                <FlatList
-                    data={widget.members}
-                    keyExtractor={item => item.id}
-                    renderItem={({ item }) => (
-                        <Members
-                            data={item}
-                        />
-                    )}
-                    ItemSeparatorComponent={() => <ListDivider />}
-                    style={styles.members}
-                />
-
+                <>
+                    <ListHeader
+                        title="Jogadores"
+                        subtitle={`Total ${widget.members.length}`}
+                    />
+                    <FlatList
+                        data={widget.members}
+                        keyExtractor={item => item.id}
+                        renderItem={({ item }) => (
+                            <Members
+                                data={item}
+                            />
+                        )}
+                        ItemSeparatorComponent={() => <ListDivider />}
+                        style={styles.members}
+                    />
+                </>
             }
-
-
             <View style={styles.footer}>
                 <ButtonIcon
                     title="Entrar no servidor do Discord"
