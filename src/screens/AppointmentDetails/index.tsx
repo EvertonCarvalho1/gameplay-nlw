@@ -66,8 +66,6 @@ export function AppointmentDetails() {
             message: message,
             url: 'https://discord.com/'
         });
-
-        console.log('aaa', widget)
     }
 
     function handleOpenGuild() {
