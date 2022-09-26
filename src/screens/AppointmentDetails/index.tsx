@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Fontisto } from '@expo/vector-icons';
 import { BorderlessButton } from 'react-native-gesture-handler';
 import { useRoute } from "@react-navigation/native";
+import * as Linking from 'expo-linking';
 
 import {
     ImageBackground,
@@ -59,14 +60,18 @@ export function AppointmentDetails() {
     function handleShareInvitation() {
         const message = Platform.OS == 'ios'
             ? `Junte-se a ${guildSelected.guild.name}`
-            : widget.instant_invite;
+            : 'https://discord.com/';
 
         Share.share({
             message: message,
-            url: 'https://url_teste.com'
+            url: 'https://discord.com/'
         });
 
-        // console.log(widget)
+        console.log('aaa', widget)
+    }
+
+    function handleOpenGuild() {
+        Linking.openURL('https://discord.com/')
     }
 
     useEffect(() => {
@@ -78,6 +83,7 @@ export function AppointmentDetails() {
             <Header
                 title="Detalhes"
                 action={
+                    guildSelected.guild.owner &&
                     <BorderlessButton>
                         <Fontisto
                             name="share"
@@ -125,10 +131,9 @@ export function AppointmentDetails() {
             <View style={styles.footer}>
                 <ButtonIcon
                     title="Entrar no servidor do Discord"
+                    onPress={handleOpenGuild}
                 />
             </View>
-
-
         </Background>
     );
 } 
