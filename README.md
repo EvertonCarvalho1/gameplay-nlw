@@ -51,7 +51,7 @@ $ expo start
 
 Você pode visualizar o layout do projeto através dos links abaixo:
 
-- [Layout](https://www.figma.com/file/0kv33XYjvOgvKGKHBaiR07/GamePlay-NLW-Together/duplicate) 
+- [Layout](https://www.figma.com/community/file/991338130828322960) 
 
 Lembrando que você precisa ter uma conta [Figma](http://figma.com/) para acessá-lo.
 
