@@ -16,8 +16,22 @@
 
 Este projeto foi desenvolvido utilizando as seguintes tecnologias:
  
-- [React Native](https://reactnative.dev/)
-- [Expo](https://expo.io/)
+-   [ ] React Native
+-   [ ] Typescript
+-   [ ] Expo
+-   [ ] Context API
+-   [ ] Async Storage
+-   [ ] Vector Icons
+-   [ ] React Native Svg e Svg Transform
+-   [ ] Axios
+-   [ ] Gradient colors
+-   [ ] OAuth2 Discord 
+-   [ ] Expo Google Fonts
+-   [ ] React Navigation Stack
+-   [ ] React Native Gesture Handler
+-   [ ] Expo Authentication
+-   [ ] React Native Share
+-   [ ] Deep Link
 
 ## 🚀 Começando
 
