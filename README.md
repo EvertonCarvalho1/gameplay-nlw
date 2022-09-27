@@ -1,2 +1,54 @@
-# gameplay-nlw
-Projeto desenvolvido na missão React Native no NLW #06
+<p align="center">
+  <img alt="gameplay" src="https://user-images.githubusercontent.com/82480230/192576626-8fd4a3b7-d727-4b37-bb38-b6e3e6b0decc.png" width="160px">
+</p>
+
+<p align="center">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/EvertonCarvalho1/gameplay-nlw?color=991f36&labelColor=0D133D">
+</p>
+
+<h1 align="center">
+    <img alt="gameplay" title="Gameplay" src="https://user-images.githubusercontent.com/82480230/192576991-2919df78-197e-4250-aa62-350523dffb22.png" />
+</h1>
+
+<br>
+
+## 🧪 Tecnologias
+
+Este projeto foi desenvolvido utilizando as seguintes tecnologias:
+ 
+- [React Native](https://reactnative.dev/)
+- [Expo](https://expo.io/)
+
+## 🚀 Começando
+
+Clone o projeto e acesse a pasta.
+
+```bash
+$ git clone https://github.com/EvertonCarvalho1/gameplay-nlw.git
+$ cd gameplay-nlw
+```
+
+Lembre-se de criar seu App no servidor Discord para obter as credenciais de autenticação. Em seguida, defina as configurações do seu aplicativo no arquivo .env (remova o exemplo do arquivo .env.example).
+ 
+ ```cl
+REDIRECT_URI=
+SCOPE=
+RESPONSE_TYPE=
+CLIENT_ID=
+CDN_IMAGE=
+```
+
+Siga os passos abaixo:
+```bash
+# Instale as dependências
+$ yarn
+
+# Iniciar o projeto
+$ expo start
+```
+
+
+
+## 📝 Licença
+
+Este projeto está licenciado sob a Licença MIT. Consulte o arquivo [LICENSE](LICENSE.md) para obter detalhes.
