@@ -107,11 +107,15 @@ export function AppointmentDetails() {
                 </View>
             </ImageBackground>
 
+
+
             {loading ? <Load /> :
                 <>
+
+
                     <ListHeader
                         title="Jogadores"
-                        subtitle={`Total ${widget.members.length}`}
+                        subtitle={Object.keys(widget).length === 0 ? `Sem dados` : `Total ${widget.members.length}`}
                     />
                     <FlatList
                         data={widget.members}
@@ -127,10 +131,12 @@ export function AppointmentDetails() {
                 </>
             }
             <View style={styles.footer}>
-                <ButtonIcon
-                    title="Entrar no servidor do Discord"
-                    onPress={handleOpenGuild}
-                />
+                {Object.keys(widget).length !== 0 &&
+                    <ButtonIcon
+                        title="Entrar no servidor do Discord"
+                        onPress={handleOpenGuild}
+                    />
+                }
             </View>
         </Background>
     );
