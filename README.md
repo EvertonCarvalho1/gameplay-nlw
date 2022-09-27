@@ -47,6 +47,13 @@ $ yarn
 $ expo start
 ```
 
+## 🔖 Layout
+
+Você pode visualizar o layout do projeto através dos links abaixo:
+
+- [Layout](https://www.figma.com/file/0kv33XYjvOgvKGKHBaiR07/GamePlay-NLW-Together/duplicate) 
+
+Lembrando que você precisa ter uma conta [Figma](http://figma.com/) para acessá-lo.
 
 
 ## 📝 Licença
